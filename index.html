@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Input Nilai Mahasiswa</h3>
+    <label>Nama:</label><br>
+    <input type="text" id="nama"><br><br>
+
+    <label>Mata Kuliah:</label><br>
+    <input type="text" id="matkul"><br><br>
+
+    <label>UTS:</label><br>
+    <input type="number" id="uts"><br><br>
+
+    <label>UAS:</label><br>
+    <input type="number" id="uas"><br><br>
+
+    <button onclick="proses()">Kirim</button>
+
+    <hr>
+
+    <p id="greetings"></p>
+    <p id="output"></p>
+
+    <script>
+      // Tampilkan salam sesuai waktu
+      if (new Date().getHours() < 18) {
+        document.getElementById("greetings").innerHTML = "Good Morning!";
+      } else {
+        document.getElementById("greetings").innerHTML = "Good Night!";
+      }
+
+      function proses() {
+        let nama = document.getElementById("nama").value;
+        let matkul = document.getElementById("matkul").value;
+        let uts = parseFloat(document.getElementById("uts").value);
+        let uas = parseFloat(document.getElementById("uas").value);
+        let total = (uts + uas );
+        let rata_rata = (uts + uas) / 2;
+
+        let grade = "";
+        let ket = "";
+
+        if (rata_rata >= 80 && rata_rata <= 100) {
+          grade = "A"; ket = "Lulus";
+        } else if (rata_rata >= 70) {
+          grade = "B"; ket = "Lulus";
+        } else if (rata_rata >= 60) {
+          grade = "C"; ket = "Remedial";
+        } else if (rata_rata >= 50) {
+          grade = "D"; ket = "Mengulang";
+        } else {
+          grade = "E"; ket = "Mengulang";
+        }
+
+        // Tampilkan hasil
+        document.getElementById("output").innerHTML =
+          "Nama: " + nama + "<br>" +
+          "Mata Kuliah: " + matkul + "<br>" +
+          "UTS: " + uts + "<br>" +
+          "UAS: " + uas + "<br>" +
+          "Total: " + total + "<br>" +
+          "Rata-rata: " + rata_rata + "<br>" +
+          "Grade: " + grade + "<br>" +
+          "Keterangan: " + ket;
+      }
+    </script>
+  </body>
+</html>
